@@ -9,8 +9,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class Formulario extends javax.swing.JFrame {
     ArrayList<Musica> dadosArvore = new ArrayList<>();
-    BinarySearchTree<Musica> treeCSV = new BinarySearchTree<>();
-    BinarySearchTree<Musica> treeManual = new BinarySearchTree<>();
+    BinarySearchTree<Musica> tree = new BinarySearchTree<>();
+    
 
     
     public Formulario() {
@@ -21,6 +21,7 @@ public class Formulario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -44,6 +45,11 @@ public class Formulario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txt = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btnOrdena = new javax.swing.JButton();
+        btnPos = new javax.swing.JRadioButton();
+        btnPre = new javax.swing.JRadioButton();
+        btnIn = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -206,6 +212,64 @@ public class Formulario extends javax.swing.JFrame {
 
         jLabel8.setText("Inserido do momento: ");
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnOrdena.setBackground(new java.awt.Color(255, 255, 0));
+        btnOrdena.setText("ordernar");
+        btnOrdena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(btnPos);
+        btnPos.setText("Pos Order");
+
+        buttonGroup1.add(btnPre);
+        btnPre.setText("Pre Order");
+        btnPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(btnIn);
+        btnIn.setText("In Order");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnPos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, Short.MAX_VALUE))
+                            .addComponent(btnIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPre)))
+                .addGap(18, 18, 18)
+                .addComponent(btnOrdena)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(btnPos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOrdena)
+                    .addComponent(btnPre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnIn)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -217,12 +281,17 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(71, 71, 71)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(btnCarregar)))
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(276, 276, 276)
+                                .addComponent(btnCarregar))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -240,7 +309,11 @@ public class Formulario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCarregar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
@@ -276,15 +349,14 @@ public class Formulario extends javax.swing.JFrame {
                     musica.setGenero(leitura[3]);
                     musica.setAlbum(leitura[4]);
                     musica.setAnoLancamento(Integer.parseInt(leitura[5]));
-                    treeCSV.add(musica);
+                    tree.add(musica);
                     dadosArvore.add(musica); //listar na tabela
                 }
             } //fim while
-            int comparacoes = treeCSV.getComparacoes();
+            int comparacoes = tree.getComparacoes();
             System.out.println("Comparacoes durante a inserção: " + comparacoes);
             String mensagem = "Quantidade de comparações durante a inserção: " + comparacoes;
             JOptionPane.showMessageDialog(null, mensagem, "Comparações", JOptionPane.INFORMATION_MESSAGE);
-            treeCSV.inOrder();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -298,14 +370,14 @@ public class Formulario extends javax.swing.JFrame {
         novaMusica.setAnoLancamento(Integer.parseInt(txtAno.getText()));
         novaMusica.setGenero(txtGenero.getText());
         novaMusica.setRanking(Integer.parseInt(txtRanking.getText()));
-        treeManual.add(novaMusica);
+        tree.add(novaMusica);
+        tree.inOrder();
         txt.setText(novaMusica.toString());
         txt.setEditable(false);
-        int comparacoes = treeManual.getComparacoes();
+        int comparacoes = tree.getComparacoes();
         System.out.println("\n ***** Comparacoes durante a inserção: " + comparacoes+ " ********");
         String mensagem = "Quantidade de comparações durante a inserção: " + comparacoes;
         JOptionPane.showMessageDialog(null, mensagem, "Comparações", JOptionPane.INFORMATION_MESSAGE);
-        treeManual.inOrder();
     }
     
     
@@ -353,8 +425,29 @@ public class Formulario extends javax.swing.JFrame {
 
     private void btnCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarActionPerformed
         carregaArquivo();
+        tree.inOrder();
         mostra();
     }//GEN-LAST:event_btnCarregarActionPerformed
+
+    private void btnOrdenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaActionPerformed
+       if(btnPos.isSelected()){
+           tree.posOrder();
+           System.out.println("\n ****** POS ORDEM ********\n");
+       }
+           
+       else if(btnPre.isSelected()){
+           tree.preOrder();
+           System.out.println("\n ****** PRE ORDEM ********\n");
+       }
+       else if(btnIn.isSelected()){
+           tree.inOrder();
+           System.out.println("\n ****** in ORDEM ******** \n");
+       }
+    }//GEN-LAST:event_btnOrdenaActionPerformed
+
+    private void btnPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,6 +487,11 @@ public class Formulario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarregar;
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JRadioButton btnIn;
+    private javax.swing.JButton btnOrdena;
+    private javax.swing.JRadioButton btnPos;
+    private javax.swing.JRadioButton btnPre;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -404,6 +502,7 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
